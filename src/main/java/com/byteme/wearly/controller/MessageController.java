@@ -30,16 +30,6 @@ public class MessageController {
     private final MessageService messageService;
     private final ConversationService conversationService;
 
-//    @PostMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Message> createMessage(@PathVariable("id") Long receiverId, @RequestBody Message message) {
-//        // validate if convo code already exist in conversation table, if so, no need to create a new code
-//        if (!conversationService.codeExist(message.getConvoCode())) {
-//            conversationService.create(message.getUser().getId(), receiverId);
-//        }
-//        messageService.create(message);
-//        return new ResponseEntity<>(message, HttpStatus.CREATED);
-//    }
-
     @PostMapping(value = "/{id}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<String> createMessage(@PathVariable("id") Long receiverId, @RequestPart("message") String messageStr,
                                                  @RequestPart("file") MultipartFile file) throws IOException {
