@@ -44,7 +44,7 @@ class CouturierRepoTest {
     void itShouldNotRegisterNewCouturier() {
 
         // given
-        Long id = 3L; // this ID does not exist
+        Long id = 10L; // this ID does not exist
         // when
         DataIntegrityViolationException exception = assertThrows(DataIntegrityViolationException.class, () -> {
            couturierRepoTest.addCouturierById(id);
